@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login(saveCurrentUser) {
     const initialValues={
       
         email:'',
@@ -21,7 +21,7 @@ export default function Login() {
         console.log(data);
         if(data.message=='success'){
           localStorage.setItem("userToken",data.token);
-        //   saveCurrentUser();
+          saveCurrentUser();
           toast.success("User added successfully");
         }
         navigate('/home');
