@@ -1,12 +1,12 @@
 import { RouterProvider} from "react-router-dom";
 import Layout from "./layouts/Layout.jsx";
-import Register from "./components/web/register/Register.jsx";
-import Login from "./components/web/login/Login.jsx";
-import Home from "./components/web/home/Home.jsx";
-import Categories from "./components/web/categories/Categories.jsx";
+import Register from "./componants/web/register/Register.jsx";
+import Login from "./componants/web/login/Login.jsx";
+import Home from "./componants/web/home/Home.jsx";
+import Categories from "./componants/web/categories/Categories.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
-import HomeDashboard from './components/dashboard/home/Home.jsx';
-import CategoriesDashboard from './components/dashboard/categories/Categories.jsx'
+import HomeDashboard from './componants/dashboard/home/Home.jsx';
+import CategoriesDashboard from './componants/dashboard/categories/Categories.jsx'
 import { createBrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import {jwtDecode} from 'jwt-decode';
