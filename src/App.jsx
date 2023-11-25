@@ -6,7 +6,7 @@ import Home from "./componants/web/home/Home.jsx";
 import Categories from "./componants/web/categories/Categories.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import HomeDashboard from './componants/dashboard/home/Home.jsx';
-import CategoriesDashboard from './componants/dashboard/categories/Categories.jsx'
+import CategoriesDashboard from './componants/dashboard/categories/categories.jsx'
 import { createBrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import {jwtDecode} from 'jwt-decode';
