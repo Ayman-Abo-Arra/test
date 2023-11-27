@@ -1,7 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar(user,setUser) {
+
+  const navigate=useNavigate();
+  const logout = ()=>{
+    localStorage.removeItem('userToken');
+    setUser(null)
+    console.log(user);
+    navigate('/home')
+
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
     <div className="container">
@@ -10,7 +19,7 @@ export default function Navbar() {
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav m-auto mb-2 mb-lg-0"> 
        
         <li className="nav-item">
           <a className="nav-link" href="#">Home</a>
@@ -23,18 +32,32 @@ export default function Navbar() {
         <li className="nav-item">
         <a className="nav-link" href="#">Products</a>
       </li>
-      
-      
+
+      {user&&  <li className="nav-item">
+        <a className="nav-link" href="#">Cart</a>
+      </li>}
+     
       </ul>
+      
+    
       <ul className="navbar-nav">
       <li className="nav-item dropdown">
       <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Users
       </a>
       <ul className="dropdown-menu ">
-        <li><Link className="dropdown-item" to="/register">register</Link></li>
+        {!user?<>
+        <li><Link className="dropdown-item" to="/register">Register</Link></li>
         <li><hr className="dropdown-divider" /></li>
-        <li><Link className="dropdown-item" to="/login">login</Link></li>
+        <li><Link className="dropdown-item" to="/login">Login</Link></li>
+        
+        </>:
+        <>
+        <li><Link className="dropdown-item" >Profile</Link></li>
+        <li><hr className="dropdown-divider" /></li>
+        <li><Link className="dropdown-item" onClick={logout}>Log Out</Link></li>
+        </>
+        }
       </ul>
     </li>
       </ul>

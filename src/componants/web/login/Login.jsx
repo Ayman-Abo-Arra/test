@@ -7,16 +7,13 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login(saveCurrentUser) {
+    const navigate =useNavigate();
     const initialValues={
-      
         email:'',
-        password:'',
-       
+        password:'', 
     };
 
-    const onSubmit=async users=>{
-       
-
+    const onSubmit = async users=>{
         const {data} = await axios.post(`https://ecommerce-node4.vercel.app/auth/signin`,users);
         console.log(data);
         if(data.message=='success'){
@@ -25,17 +22,14 @@ export default function Login(saveCurrentUser) {
           toast.success("User added successfully");
         }
         navigate('/home');
+    
 
-
-    }
-
+    };
     const formik = useFormik({
         initialValues,
         onSubmit,
         validationSchema:loginSchema,
     });
-   
-    
 
     const inputs =[
         
@@ -59,7 +53,7 @@ export default function Login(saveCurrentUser) {
     <Input 
     type={input.type} 
     id={input.id} 
-    
+    name={input.name}
     title ={input.title}
     value={input.value} 
     key={index}
@@ -75,9 +69,9 @@ export default function Login(saveCurrentUser) {
     <>
     <div className='container w-50 m-auto pt-2 '>
         <h2 className='pt-4'> Login : </h2> 
-        <form className='pt-3 ' onSubmit={formik.handleSubmit} encType='multipart/form-data'>
+        <form className='pt-3 ' onSubmit={formik.handleSubmit} >
             {renderInputs}
-            <button disabled={!formik.isValid} type='submit' className='text-white bg-success pt-2 pb-2 pe-4 ps-4 shadow-none rounded-pill   '> Register </button>
+            <button disabled={!formik.isValid} type='submit' className='text-white bg-success pt-2 pb-2 pe-4 ps-4 shadow-none rounded-pill   '> Login </button>
         </form>
 
     </div>

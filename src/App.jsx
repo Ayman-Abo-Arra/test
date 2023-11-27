@@ -8,7 +8,7 @@ import DashboardLayout from "./layouts/DashboardLayout.jsx";
 import HomeDashboard from './componants/dashboard/home/Home.jsx';
 import CategoriesDashboard from './componants/dashboard/categories/categories.jsx'
 import { createBrowserRouter } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {jwtDecode} from 'jwt-decode';
 export default function App() {
 
@@ -21,12 +21,18 @@ export default function App() {
     const decoded = jwtDecode(token);
     setUser(decoded);
   }
+  useEffect( ()=>{
+    if(localStorage.getItem("userToken")){
+      saveCurrentUser();
+    }
+
+  },[])
 
 
   const router = createBrowserRouter([
     {
       path:'/',
-      element:<Layout />,
+      element:<Layout user={user} setUser={setUser}/>,
       children:[
           {
             path:'register',
