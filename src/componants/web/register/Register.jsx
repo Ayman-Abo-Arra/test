@@ -90,11 +90,11 @@ export default function Register() {
 
   return (
     <>
-    <div className='container w-50 m-auto pt-2 '>
+    <div className='container w-50 m-auto pt-2 bg-primary-subtle mt-3 '>
         <h2 className='pt-4'> Create Acount : </h2> 
         <form className='pt-3 ' onSubmit={formik.handleSubmit} encType='multipart/form-data'>
             {renderInputs}
-            <button disabled={!formik.isValid} type='submit' className='text-white bg-success pt-2 pb-2 pe-4 ps-4 shadow-none rounded-pill   '> Register </button>
+            <button disabled={!formik.isValid} type='submit' className='text-white bg-info pt-2 pb-2 pe-4 ps-4  rounded-pill  border-0 mb-3'> Register </button>
         </form>
 
     </div>

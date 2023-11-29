@@ -43,7 +43,7 @@ export default function App() {
             element:<Login saveCurrentUser={saveCurrentUser} />
           },
           {
-            path:'home',
+            index:true,
             element:<Home />
           },
           {
