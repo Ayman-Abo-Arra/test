@@ -1,0 +1,9 @@
+:root{
+    --main-color:rgb(62, 110, 180);
+}
+.bg-main-color{
+    background-color: var(--main-color);
+}
+.text-main-color{
+    color: var(--main-color);
+}

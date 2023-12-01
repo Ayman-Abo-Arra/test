@@ -10,6 +10,8 @@ import CategoriesDashboard from './componants/dashboard/categories/categories.js
 import { createBrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {jwtDecode} from 'jwt-decode';
+import CategoriesDetails from "./componants/web/categories/CategoriesDetails.jsx";
+import Product from "./componants/web/products/Product.jsx";
 export default function App() {
 
 
@@ -49,6 +51,14 @@ export default function App() {
           {
             path:'categories',
             element:<Categories />
+          },
+          {
+            path:'products/category/:categoryId',
+            element:<CategoriesDetails />
+          },
+          {
+            path:'product/:productId',
+            element:<Product />
           },
           {
             path:'*',
