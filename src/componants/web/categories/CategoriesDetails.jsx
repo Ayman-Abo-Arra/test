@@ -20,16 +20,19 @@ export default function CategoriesDetails() {
     )
     }
   return (
-    <div className='container products row '>
+    <div className='container'>
+
+    <div className=' products row '>
       {data.length?data.map((product)=>
-      <div className='container product col-md-4 mt-4 ' key={product._id}> 
+      <div className=' product col-md-4 mt-4 ' key={product._id}> 
             <img src={product.mainImage.secure_url} className='img-fluid' />
-            <h2 className='ps-4 text-main-color' >{product.name} </h2>
+            <h2 className=' pt-3 text-main-color fs-5' >{product.name} </h2>
             <Link to={`/product/${product._id}`} className='text-main-color  ps-3 '> Details </Link>
             </div>
       ): <h2> No Product </h2>
-      }
+    }
 
+    </div>
     </div>
   )
 }

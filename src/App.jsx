@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import {jwtDecode} from 'jwt-decode';
 import CategoriesDetails from "./componants/web/categories/CategoriesDetails.jsx";
 import Product from "./componants/web/products/Product.jsx";
+import { CartContextProvider } from "./componants/web/context/Cart.jsx";
+import Cart from "./componants/web/cart/Cart.jsx";
 export default function App() {
 
 
@@ -47,6 +49,10 @@ export default function App() {
           {
             index:true,
             element:<Home />
+          },
+          {
+            path:'cart',
+            element:<Cart />
           },
           {
             path:'categories',
@@ -86,6 +92,8 @@ export default function App() {
     }
   ]);
   return (
-    <RouterProvider router={router} />
+    <CartContextProvider> 
+      <RouterProvider router={router} />
+    </CartContextProvider>
   )
 }

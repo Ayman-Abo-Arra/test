@@ -34,7 +34,7 @@ export default function Navbar({user,setUser}) {
       </li>
 
       {user&&  <li className="nav-item">
-        <a className="nav-link" href="#">Cart</a>
+        <Link className="nav-link" to='/cart'>Cart</Link>
       </li>}
      
       </ul>
