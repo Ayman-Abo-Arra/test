@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/User";
 import { useQuery } from "react-query";
-import style from "./profile.module.css";
+import style from "./Profile.module.css";
 import { Link, Outlet } from "react-router-dom";
 
 export default function Profile() {
