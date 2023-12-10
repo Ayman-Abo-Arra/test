@@ -9,3 +9,13 @@ export const loginSchema  = yup.object({
     email:yup.string().required("Email Is Required").email(),
     password:yup.string().required("Password Is Required").min(8,"Must be at least 8 char").max(30,"Max is 30 char")
 })
+
+export const sendCodeSchema  = yup.object({
+    email:yup.string().required("Email Is Required").email(),
+})
+
+export const forgotpasswordSchema  = yup.object({
+    code:yup.string().required("Code Is Required").length(4,"Must 4 char"),
+    email:yup.string().required("Email Is Required").email(),
+    password:yup.string().required("Password Is Required").min(8,"Must be at least 8 char").max(30,"Max is 30 char")
+})

@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/User';
+import { CartContext } from '../context/Cart';
 
-export default function Navbar({user,setUser}) {
+export default function Navbar() {
 
-  const navigate=useNavigate();
-  const logout = ()=>{
-    localStorage.removeItem('userToken');
-    setUser(null)
-    console.log(user);
-    navigate('/home')
+  let {count}=useContext(CartContext);
+  let {userToken,setUserToken,userData,setUserData}= useContext (UserContext);
+  let navigate=useNavigate();
+  const logout =()=>{
+    localStorage.removeItem("userToken");
+    setUserToken(null);
+    setUserData(null);
+    navigate('/');
 
   }
+  
+ 
   return (
     <nav className="navbar navbar-expand-lg bg-primary-subtle">
     <div className="container">
@@ -33,9 +39,11 @@ export default function Navbar({user,setUser}) {
         <a className="nav-link" href="#">Products</a>
       </li>
 
-      {user&&  <li className="nav-item">
-        <Link className="nav-link" to='/cart'>Cart</Link>
-      </li>}
+      {userToken?
+       <li className="nav-item">
+        <Link className="nav-link position-relative" to='/cart'>Cart <span className="position-absolute  start-100 translate-middle badge rounded-pill bg-danger text-bg-dark">{count} </span>  </Link>
+      </li>
+      :null}
      
       </ul>
       
@@ -43,21 +51,25 @@ export default function Navbar({user,setUser}) {
       <ul className="navbar-nav">
       <li className="nav-item dropdown">
       <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Users
+        {userData!=null?userData.userName:'Acount'}
       </a>
       <ul className="dropdown-menu ">
-        {!user?<>
+        {userToken==null?<> 
         <li><Link className="dropdown-item" to="/register">Register</Link></li>
         <li><hr className="dropdown-divider" /></li>
         <li><Link className="dropdown-item" to="/login">Login</Link></li>
-        
-        </>:
-        <>
-        <li><Link className="dropdown-item" >Profile</Link></li>
+        </>
+        :<> 
+         <li><Link className="dropdown-item" to="/profile" >Profile</Link></li>
         <li><hr className="dropdown-divider" /></li>
         <li><Link className="dropdown-item" onClick={logout}>Log Out</Link></li>
         </>
-        }
+      }
+        
+        
+       
+        
+        
       </ul>
     </li>
       </ul>

@@ -4,21 +4,24 @@ import { CartContext } from '../context/Cart'
 import { useQuery } from 'react-query';
 
 export default function Cart() {
-    const {getCartContext}= useContext(CartContext);
+    const {getCartContext,removeItemContext}= useContext(CartContext);
     const getCart= async ()=>{
         const res = await getCartContext();
         return res;
-    
+    }
+
+    const removecart = async (productId)=>{
+      const res = await removeItemContext(productId);
     }
     const {data,isLoading} = useQuery("cart",getCart);
     console.log(data);
-    // if (isLoading) {
-    //     return (
-    //       <div class="d-flex justify-content-center   ">
-    //         <div class="spinner-grow text-primary loade" role="status"></div>
-    //       </div>
-    //     );
-    //   }
+    if (isLoading) {
+        return (
+          <div class="d-flex justify-content-center   ">
+            <div class="spinner-grow text-primary loade" role="status"></div>
+          </div>
+        );
+      }
     
 
 
@@ -47,11 +50,11 @@ export default function Cart() {
 
                 <div className="item" key={product._id}>
                 <div className="product-info">
-                  <img src="https://economictimes.indiatimes.com/thumb/msid-100966456,width-1200,height-900,resizemode-4,imgsize-63314/why-become-a-product-manager.jpg?from=mdr" />
+                  <img src={product.details.mainImage.secure_url} />
                   <div className="product-details">
-                    <h2>{product.details.name}</h2>
+                    <h6 className=''>{product.details.name}</h6>
                     <span>Color:black</span>
-                    <a href="#">
+                    <a href="#" onClick={()=>removecart(product.details._id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width={24}
@@ -88,7 +91,7 @@ export default function Cart() {
                       />
                     </svg>
                   </button>
-                  <span>1</span>
+                  <span>{product.quantity}</span>
                   <button>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +109,7 @@ export default function Cart() {
                     </svg>
                   </button>
                 </div>
-                <div className="price">$40</div>
+                <div className="price">{product.details.price}</div>
                 <div className="subtotal">$38.00</div>
               </div>
                  )

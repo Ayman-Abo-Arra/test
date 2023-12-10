@@ -1,25 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Input from '../../pages/Input';
 import { useFormik } from 'formik';
 import { loginSchema } from '../validatin/Validatin';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/User';
+import './Login.css';
 
-export default function Login({saveCurrentUser}) {
+
+export default function Login() {
     const navigate =useNavigate();
+
+    let {userToken,setUserToken}=useContext(UserContext);
+    if(userToken){
+        navigate(-1)
+    }
     const initialValues={
         email:'',
         password:'', 
     };
 
     const onSubmit = async users=>{
-        const {data} = await axios.post(`https://ecommerce-node4.vercel.app/auth/signin`,users);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`,users);
         console.log(data);
         if(data.message=='success'){
           localStorage.setItem("userToken",data.token);
-          saveCurrentUser();
-          toast.success("User added successfully");
+          setUserToken(data.token);
+          toast.success("User Login successfully");
         }
         navigate('/home');
     
@@ -72,6 +80,7 @@ export default function Login({saveCurrentUser}) {
         <form className='pt-3 ' onSubmit={formik.handleSubmit} >
             {renderInputs}
             <button disabled={!formik.isValid} type='submit' className='text-white bg-info pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3  '> Login </button>
+            <Link to='/sendCode' className='forgot'> Forgot Password? </Link>
         </form>
 
     </div>

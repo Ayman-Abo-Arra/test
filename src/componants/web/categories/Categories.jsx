@@ -13,7 +13,7 @@ import "./Categories.css"
 
 export default function Categories() {
   const getCategoties = async ()=>{
-    const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/categories`);
+    const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/categories/active?limit=10`);
     return data;
   }
   const {data,isLoading} = useQuery('web_categories',getCategoties);
@@ -49,7 +49,7 @@ export default function Categories() {
         <div className='category'>
 
          <img src={category.image.secure_url} className='rounded-circle'/>
-         <h2 className='fs-5 '>{category.name}</h2> 
+         <h2 className='fs-6 '>{category.name}</h2> 
         </div>
         </Link>
          </SwiperSlide>

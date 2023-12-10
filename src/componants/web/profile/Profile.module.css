@@ -1,0 +1,26 @@
+.profile{
+    display: flex;
+    gap: 80px;
+    padding-top: 20px;
+  
+}
+.profileLinks nav{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100px;
+}
+.profileLinks{
+    /* background-color: rgb(235, 154, 5); */
+    width: 100px;
+    
+}
+.userData{
+    flex-grow: 1;
+}
+nav a{
+    color: rgb(62, 110, 180);
+    text-decoration: none;
+}
