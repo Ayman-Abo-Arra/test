@@ -4,14 +4,27 @@ import { CartContext } from '../context/Cart'
 import { useQuery } from 'react-query';
 
 export default function Cart() {
-    const {getCartContext,removeItemContext}= useContext(CartContext);
+    const {getCartContext,removeItemContext,clearCartContext,increaseQuintetyContext,decreaseQuintetyContext,count,setCount}= useContext(CartContext);
     const getCart= async ()=>{
         const res = await getCartContext();
         return res;
     }
 
+    const increaseQuintety= async (productId )=>{
+      const res = await increaseQuintetyContext(productId);
+      setCount(count=>count+1);
+    }
+
+    const decreaseQuintety= async (productId )=>{
+      const res = await decreaseQuintetyContext(productId);
+      setCount(count=>count-1);
+    }
+
     const removecart = async (productId)=>{
       const res = await removeItemContext(productId);
+    }
+    const clearcart = async (productId)=>{
+      const res = await clearCartContext(productId);
     }
     const {data,isLoading} = useQuery("cart",getCart);
     console.log(data);
@@ -74,7 +87,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="quantity">
-                  <button>
+                  <button onClick={()=>decreaseQuintety(product.details._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -92,7 +105,7 @@ export default function Cart() {
                     </svg>
                   </button>
                   <span>{product.quantity}</span>
-                  <button>
+                  <button onClick={()=>increaseQuintety(product.details._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -110,7 +123,7 @@ export default function Cart() {
                   </button>
                 </div>
                 <div className="price">{product.details.price}</div>
-                <div className="subtotal">$38.00</div>
+                <div className="subtotal">{product.details.finalPrice}</div>
               </div>
                  )
 
@@ -158,7 +171,18 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          <div className="row">
+
+         
+          <div >
+
+          <button  className='text-white bg-danger pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3 ' onClick={()=>clearcart(products._id)}> Clear Cart </button> 
+          </div>
+
+
+   
+          
+
+          <div className="row"> 
             <h2>Have a coupon ?</h2>
             <p>Add your code for an instant cart discount</p>
             <div className="coupon-form">

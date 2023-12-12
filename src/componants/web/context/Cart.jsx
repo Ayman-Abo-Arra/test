@@ -57,8 +57,61 @@ export function CartContextProvider({children}){
         }
 
     }
+
+    const clearCartContext =async( )=>{
+        try{ 
+            const token =localStorage.getItem("userToken");
+            console.log(token);
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/clear`,{},
+            {headers:{Authorization:`Tariq__${token}`}}
+            )
+            if(data.message=='success'){
+                toast.success("All Product Remove Succefully");
+              }
+              return data;
+        }
+        catch {
+            console.log(error);
+            
+        }
+
+    }
+    const increaseQuintetyContext  =async( productId)=>{
+        try{ 
+            const token =localStorage.getItem("userToken");
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/incraseQuantity`,{productId},
+            {headers:{Authorization:`Tariq__${token}`}}
+            )
+            if(data.message=='success'){
+                toast.success("Product Add ");
+              }
+              return data;
+        }
+        catch {
+            console.log(error);
+            
+        }
+
+    }
+    const decreaseQuintetyContext  =async( productId)=>{
+        try{ 
+            const token =localStorage.getItem("userToken");
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/decraseQuantity`,{productId},
+            {headers:{Authorization:`Tariq__${token}`}}
+            )
+            if(data.message=='success'){
+                toast.success("Product Remove ");
+              }
+              return data;
+        }
+        catch {
+            console.log(error);
+            
+        }
+
+    }
     
-    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount}}>
+    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount,clearCartContext,increaseQuintetyContext,decreaseQuintetyContext}}>
               {children}
     </CartContext.Provider>;
 }
