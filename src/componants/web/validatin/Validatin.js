@@ -19,3 +19,9 @@ export const forgotpasswordSchema  = yup.object({
     email:yup.string().required("Email Is Required").email(),
     password:yup.string().required("Password Is Required").min(8,"Must be at least 8 char").max(30,"Max is 30 char")
 })
+
+export const orderSchema  = yup.object({
+    phone:yup.string().required("Phone Is Required").min(10,"Must be at least 10 char").max(20,"Max is 20 char"),
+    address:yup.string().required("Address Is Required").min(5,"Must be at least 10 char").max(30,"Max is 30 char")
+
+})

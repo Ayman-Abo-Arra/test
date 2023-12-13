@@ -6,10 +6,13 @@ import { useContext, useEffect } from "react";
 export default function App() {
 let {setUserToken} = useContext(UserContext); 
 let {setCount,getCartContext}=useContext(CartContext);
+let {quantity,setQuantity}=useContext(CartContext);
+
   useEffect(()=>{
     if(localStorage.getItem("userToken") != null){
       setUserToken(localStorage.getItem("userToken"));
       setCount(getCartContext().count);
+      setQuantity(quantity);
     }
 
 

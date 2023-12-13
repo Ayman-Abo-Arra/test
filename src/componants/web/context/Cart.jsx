@@ -6,6 +6,8 @@ export const CartContext  =createContext(null);
 export function CartContextProvider({children}){
 
     let [count,setCount]=useState(0);
+    let [quantity,setQuantity]=useState(0);
+
     const addToCartContext = async (productId)=>{
         try{ 
             const token =localStorage.getItem("userToken");
@@ -111,7 +113,43 @@ export function CartContextProvider({children}){
 
     }
     
-    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount,clearCartContext,increaseQuintetyContext,decreaseQuintetyContext}}>
+    const createOrderContext =async(users )=>{
+        try{ 
+            const token =localStorage.getItem("userToken");
+            console.log(token);
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/order`,users,
+            {headers:{Authorization:`Tariq__${token}`}}
+            )
+            if(data.message=='success'){
+                toast.success("Create Order Succefully");
+              }
+              return data;
+        }
+        catch {            
+        }
+
+    }
+
+    const getOrderContext =async( )=>{
+        try{ 
+            const token =localStorage.getItem("userToken");
+            console.log(token);
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/order`,
+            {headers:{Authorization:`Tariq__${token}`}}
+            )
+            // if(data.message=='success'){
+            //     toast.success("All Product Remove Succefully");
+            //   }
+              return data;
+        }
+        catch {
+            console.log(error);
+            
+        }
+
+    }
+    return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount, clearCartContext,
+   increaseQuintetyContext,decreaseQuintetyContext,getOrderContext,createOrderContext,quantity,setQuantity}}>
               {children}
     </CartContext.Provider>;
 }

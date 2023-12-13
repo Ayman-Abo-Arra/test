@@ -20,6 +20,7 @@ export default function Profile() {
         <nav>
           <Link to="info"> Info </Link>
           <Link to="contact">Contact </Link>
+          <Link to="order">Order </Link>
         </nav>
       </div>
 

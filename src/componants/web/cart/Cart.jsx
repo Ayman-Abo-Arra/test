@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Cart.css'
 import { CartContext } from '../context/Cart'
 import { useQuery } from 'react-query';
+
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
     const {getCartContext,removeItemContext,clearCartContext,increaseQuintetyContext,decreaseQuintetyContext,count,setCount}= useContext(CartContext);
@@ -176,6 +178,8 @@ export default function Cart() {
           <div >
 
           <button  className='text-white bg-danger pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3 ' onClick={()=>clearcart(products._id)}> Clear Cart </button> 
+          <Link  className='text-white bg-info pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3 ms-5 ' to='/createorder' > Create Order </Link> 
+
           </div>
 
 
