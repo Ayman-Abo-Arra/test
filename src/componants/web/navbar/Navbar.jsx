@@ -6,12 +6,13 @@ import { CartContext } from '../context/Cart';
 export default function Navbar() {
 
   let {count}=useContext(CartContext);
-  let {userToken,setUserToken,userData,setUserData}= useContext (UserContext);
+  let {userToken,setUserToken,userData,setUserData,userId,setUserId}= useContext (UserContext);
   let navigate=useNavigate();
   const logout =()=>{
     localStorage.removeItem("userToken");
     setUserToken(null);
     setUserData(null);
+    setUserId(null);
     navigate('/');
 
   }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery } from 'react-query';
 import Input from '../../pages/Input';
 import { useFormik } from 'formik';
@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { CartContext } from '../context/Cart';
 
 export default function Order() {
-
   const initialValues={
     phone:'',
     address:'', 
@@ -68,7 +67,7 @@ touched={formik.touched}
 
 )
   // test
-    const {getCartContext,removeItemContext,clearCartContext,increaseQuintetyContext,decreaseQuintetyContext,
+    const {getCartContext,removeItemContext,increaseQuintetyContext,decreaseQuintetyContext,
         setCount,createOrderContext}= useContext(CartContext);
 
     const createorder = async (productId)=>{
@@ -92,7 +91,6 @@ touched={formik.touched}
         return res;
     }
     const {data,isLoading} = useQuery("cart",getCart);
-    console.log(data);
     if (isLoading) {
         return (
           <div class="d-flex justify-content-center   ">
@@ -100,6 +98,7 @@ touched={formik.touched}
           </div>
         );
       }
+
   return ( 
   
   <div className="cart">
@@ -209,7 +208,7 @@ touched={formik.touched}
     </div>
     <div className='mt-5'>
 
-         <button  className='text-white bg-info pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3 ' disabled={!formik.isValid} type='submit' onClick={()=>createorder(products._id)}> Confirm </button> 
+         <button  className='text-white bg-info pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3 ' disabled={!formik.isValid} type='submit' onClick={()=>createorder(formik.values)}> Confirm </button> 
      </div>
 
 

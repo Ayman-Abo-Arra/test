@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/User';
 
 export default function UserOrder() {
-    let { userData, loading } = useContext(UserContext);
+    let { userId, loading } = useContext(UserContext);
+    console.log(userId);
 
   if (loading) {
     return (
@@ -13,9 +14,9 @@ export default function UserOrder() {
   }
   return (
     <div>
-    <p>{userData.address}</p>
-    <p>{userData.phone}</p>
-    <p>{userData.couponName} </p>
+    {/* <p>{userId.address}</p>
+    <p>{userId.phone}</p>
+    <p>{userId.couponName} </p> */}
 
 
     

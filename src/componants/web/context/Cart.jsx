@@ -7,7 +7,7 @@ export function CartContextProvider({children}){
 
     let [count,setCount]=useState(0);
     let [quantity,setQuantity]=useState(0);
-
+    let [userId]=useState();
     const addToCartContext = async (productId)=>{
         try{ 
             const token =localStorage.getItem("userToken");
@@ -22,7 +22,6 @@ export function CartContextProvider({children}){
               return data;
         }
         catch{
-            console.log(error);
             
         }
     }
@@ -37,7 +36,6 @@ export function CartContextProvider({children}){
               return data;
         }
         catch{
-            console.log(error);
         }
     }
 
@@ -53,8 +51,7 @@ export function CartContextProvider({children}){
               return data;
         }
         catch (error){
-            console.log("error")
-            console.log(error);
+           
             
         }
 
@@ -63,7 +60,6 @@ export function CartContextProvider({children}){
     const clearCartContext =async( )=>{
         try{ 
             const token =localStorage.getItem("userToken");
-            console.log(token);
             const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/cart/clear`,{},
             {headers:{Authorization:`Tariq__${token}`}}
             )
@@ -73,7 +69,6 @@ export function CartContextProvider({children}){
               return data;
         }
         catch {
-            console.log(error);
             
         }
 
@@ -90,7 +85,6 @@ export function CartContextProvider({children}){
               return data;
         }
         catch {
-            console.log(error);
             
         }
 
@@ -107,7 +101,6 @@ export function CartContextProvider({children}){
               return data;
         }
         catch {
-            console.log(error);
             
         }
 
@@ -116,7 +109,6 @@ export function CartContextProvider({children}){
     const createOrderContext =async(users )=>{
         try{ 
             const token =localStorage.getItem("userToken");
-            console.log(token);
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/order`,users,
             {headers:{Authorization:`Tariq__${token}`}}
             )
@@ -130,11 +122,10 @@ export function CartContextProvider({children}){
 
     }
 
-    const getOrderContext =async( )=>{
+    const getOrderContext =async(userId)=>{
         try{ 
             const token =localStorage.getItem("userToken");
-            console.log(token);
-            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/order`,
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/order`,userId,
             {headers:{Authorization:`Tariq__${token}`}}
             )
             // if(data.message=='success'){
@@ -143,13 +134,12 @@ export function CartContextProvider({children}){
               return data;
         }
         catch {
-            console.log(error);
             
         }
 
     }
     return <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext,count,setCount, clearCartContext,
-   increaseQuintetyContext,decreaseQuintetyContext,getOrderContext,createOrderContext,quantity,setQuantity}}>
+   increaseQuintetyContext,decreaseQuintetyContext,getOrderContext,createOrderContext,quantity,setQuantity,userId}}>
               {children}
     </CartContext.Provider>;
 }

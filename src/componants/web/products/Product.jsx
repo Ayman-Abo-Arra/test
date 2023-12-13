@@ -17,7 +17,6 @@ export default function Product() {
 
   const addToCart = async (productId)=>{
     const res = await addToCartContext(productId);
-    console.log(res);
   }
 
   if (isLoading) {
