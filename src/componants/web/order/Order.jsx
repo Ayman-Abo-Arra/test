@@ -128,7 +128,6 @@ touched={formik.touched}
               <img src={product.details.mainImage.secure_url} />
               <div className="product-details">
                 <h6 className=''>{product.details.name}</h6>
-                <span>Color:black</span>
                 <a href="#" onClick={()=>removecart(product.details._id)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

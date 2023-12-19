@@ -33,11 +33,11 @@ export default function Navbar() {
         </li>
 
         <li className="nav-item">
-          <a className="nav-link" href="#">Categories</a>
+          <Link className="nav-link" to="/categories">Categories</Link>
         </li>
 
         <li className="nav-item">
-        <a className="nav-link" href="#">Products</a>
+        <Link className="nav-link" to="">Products</Link>
       </li>
 
       {userToken?

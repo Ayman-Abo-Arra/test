@@ -27,7 +27,7 @@ export default function Register() {
         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`,formData);
         if(data.message=='success'){
             formik.resetForm();
-            toast.success("User added successfully");
+            toast.success("User Register successfully");
         }
 
 
