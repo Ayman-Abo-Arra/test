@@ -48,12 +48,15 @@ export default function Categories() {
         <Link to={`/products/category/${category._id}`} className='link'>
         <div className='category'>
 
-         <img src={category.image.secure_url} className='rounded-circle'/>
-         <h2 className='fs-6 '>{category.name}</h2> 
+         <img src={category.image.secure_url} />
+         <h2 className='fs-6 text-nav-color capitalize'>{category.name}</h2> 
         </div>
         </Link>
          </SwiperSlide>
-    ):'<h2> No Category Found </h2>' }
+    ):   <div class="d-flex justify-content-center  ">
+    <div class="spinner-grow text-primary" role="status">
+    </div>
+    </div>}
    
     </Swiper>
     </div>

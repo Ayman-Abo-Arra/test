@@ -3,6 +3,9 @@ import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../context/Cart";
+import { Rating } from 'primereact/rating';
+
+
 
 export default function Product() {
   const { productId } = useParams();
@@ -16,7 +19,7 @@ export default function Product() {
   };
 
   const { data, isLoading } = useQuery("product", getProduct);
-  // console.log(data);
+  console.log(data);
 
   const addToCart = async (productId) => {
     const res = await addToCartContext(productId);
@@ -31,7 +34,7 @@ export default function Product() {
   }
 
   return (
-    <div className="product container">
+    <div className="product container ">
       <div className="row mt-3">
         <div className="col-md-12">
           {data.subImages && data.subImages.map((img) => (
@@ -40,10 +43,10 @@ export default function Product() {
         </div>
       </div>
       <div className="col-md-12">
-        <h2 className="text-main-color"> {data.name} </h2>
-        <p className="text-primary fs-3">Price: {data.price}$ </p>
+        <h2 className=" font"> {data.name} </h2>
+        <p className=" fs-3 font text-nav-color">Price: {data.price}$ </p>
         <h2 className="w-100 pb-3">
-          <span className="text-main-color"> Description : </span>{" "}
+          <span className="text-nav-color font"> Description : </span>{" "}
           {data.description}
         </h2>
 
@@ -54,7 +57,7 @@ export default function Product() {
           >
             Add To Cart
           </button>
-          <h3 className="pt-4">Reviews :</h3>
+          <h3 className="pt-4 font">Reviews :</h3>
           {data.reviews && data.reviews.map((review) => (
             <div
               className="border-bottom border-warning ps-3 w-75"
@@ -62,7 +65,7 @@ export default function Product() {
             >
               <p className="fs-4 d-inline">{review.createdBy.userName} :</p>
               <p className="d-inline ps-2">{review.comment}</p>
-              <p className="d-inline ps-2">{review.rating}</p>
+              <Rating className="d-inline ps-2" value={review.rating} disabled cancel={false} />
             </div>
           ))}
         </div>

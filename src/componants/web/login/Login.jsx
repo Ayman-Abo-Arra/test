@@ -76,11 +76,11 @@ export default function Login() {
 
   return (
     <>
-    <div className='container w-50 m-auto pt-2 bg-primary-subtle mt-3'>
-        <h2 className='pt-4'> Login : </h2> 
+    <div className='container w-50 m-auto pt-2  mt-3'>
+        <h2 className='pt-4'> Login  </h2> 
         <form className='pt-3 ' onSubmit={formik.handleSubmit} >
             {renderInputs}
-            <button disabled={!formik.isValid} type='submit' className='text-white bg-info pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3  '> Login </button>
+            <button disabled={!formik.isValid} type='submit' className='text-black bg-warning pt-2 pb-2 pe-4 ps-4 border-0  rounded-pill mb-3  '> Login </button>
             <Link to='/sendCode' className='forgot'> Forgot Password? </Link>
         </form>
 

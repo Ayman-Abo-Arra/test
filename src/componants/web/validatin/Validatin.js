@@ -25,3 +25,8 @@ export const orderSchema  = yup.object({
     address:yup.string().required("Address Is Required").min(5,"Must be at least 10 char").max(30,"Max is 30 char")
 
 })
+export const commentSchema  = yup.object({
+    comment:yup.string().required("Phone Is Required").min(10,"Must be at least 3 char").max(20,"Max is 20 char"),
+    rating:yup.string().required("Address Is Required").min(5,"Must be at least 1 char").max(30,"Max is 5 char")
+
+})

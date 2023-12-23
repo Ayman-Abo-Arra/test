@@ -4,7 +4,7 @@
     background-image: url(../img/contact-details-map.png);
     background-repeat: no-repeat;
     background-position: 1050px;
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgb(214, 152, 220);
 }
 .footer1{
     width: 85%;
@@ -14,7 +14,6 @@
 .footer1 h4{
     font-size: 20px;
 color: #fff;
-font-family: "Alegreya";
 }
 a{
     text-decoration: none;
@@ -25,7 +24,8 @@ a{
 }
 .about-as p{
    margin-top: 25px;
-    color: #969696;
+    color: #fff;
+    font-weight: bold;
     font-size: 16px;
     line-height: 1.86em;
     margin-bottom: 20px;
@@ -48,7 +48,8 @@ a{
 }
 .usefil-links a{
     color: #969696;
-    
+    color: #fff;
+    font-weight: bold;
 }
 
 .opening-hours{
@@ -58,7 +59,8 @@ a{
 .opening-hours li{
         list-style-type: none;
         margin-top: 25px;
-        color: #969696;
+        color: #fff;
+        font-weight: bold;
         padding-bottom: 12px;
         border-bottom: 1px solid rgba(255,255,255,0.05);
         font-size: 16px;
@@ -75,15 +77,16 @@ a{
 
 .contact-details-icon{
     margin-top: 25px;
-    color: #969696;
-
+    color: #fff;
+    font-weight: bold;
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
     font-size: 16px;
     line-height: 1.8em;
 }
 .contact-details-icon a{
-    color: #969696;
+    color: #fff;
+    font-weight: bold;
 }
 
 .contact-details-icon span{
@@ -91,40 +94,10 @@ a{
     
 }
 
-.contact-details-icon span a:hover{
-    color: #A9A9A9;
-    cursor: pointer;
-}
 
 
-.footer2{
-    
-}
-.row-footer2{
-    padding-top: 20px;
-    text-align: center;
-}
-.social-media-icon{
-    text-align: center;
-    margin-top: 40px;
-    
-    border-radius: 100%;
-}
-.copyright-2017{
-    font-size: 18px;
-    
-    padding-top: 8px;
-    font-family: "Alegreya Sans";
-}
-.media-icon i{
-   
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    background-color: #484540;
-    border-radius: 50%;
-    font-size: 30px;
-    color: #8c8a86;
-    margin-left: 4px;
-        
-}
+
+
+
+
+

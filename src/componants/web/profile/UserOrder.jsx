@@ -13,7 +13,7 @@ export default function UserOrder() {
     return data;
   };
   const { data, isLoading } = useQuery("product", getProduct);
-  // console.log(data);
+  console.log(data);
   if (!data || !data.orders || data.orders.length === 0) {
     return <p>No orders available</p>;
   }
@@ -25,7 +25,7 @@ export default function UserOrder() {
     );
   }
 
-
+console.log(data);
 
   return (
     <div>
@@ -33,12 +33,14 @@ export default function UserOrder() {
         <div className="ps-3" key={order._id}>
           <table class="table table-success table-striped border w-75">
             <tr>
-              <th className="border ps-3 bg-success-subtle">address</th>
-              <th className="border ps-3 bg-success-subtle">phoneNumber</th>
-              <th className="border ps-3 bg-success-subtle">couponName</th>
-              <th className="border ps-3 bg-success-subtle">createdAt</th>
-              <th className="border ps-3 bg-success-subtle">finalPrice</th>
-              <th className="border ps-3 bg-success-subtle">paymentType</th>
+              <th className="border ps-3 bg-nav-color">address</th>
+              <th className="border ps-3 bg-nav-color">phoneNumber</th>
+              <th className="border ps-3 bg-nav-color">couponName</th>
+              <th className="border ps-3 bg-nav-color">createdAt</th>
+              <th className="border ps-3 bg-nav-color">finalPrice</th>
+              <th className="border ps-3 bg-nav-color">paymentType</th> 
+              <th className="border ps-3 bg-nav-color">Status</th> 
+
             </tr>
             <tr>
               <td className="border ps-2">{order.address} </td>
@@ -47,6 +49,8 @@ export default function UserOrder() {
               <td className="border ps-2">{order.createdAt} </td>
               <td className="border ps-2">{order.finalPrice} $ </td>
               <td className="border ps-2">{order.paymentType} </td>
+              <td className="border ps-2">{order.status} </td>
+
             </tr>
           </table>
         </div>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 :root{
     --main-color:rgb(62, 110, 180);
 }
@@ -6,4 +9,31 @@
 }
 .text-main-color{
     color: var(--main-color);
+}
+:root{
+    --nav-color:rgb(214, 152, 220);
+}
+
+.bg-nav-color{
+    background-color: var(--nav-color);
+}
+.text-nav-color{
+    color: var(--nav-color);
+}
+.font{
+    font-family: 'Concert One', sans-serif;
+}
+.font1{
+    font-family: 'Bad Script', cursive;
+}
+.btn-outline-primary:hover{
+    background-color: #ffff33;
+    color: black;
+    border: 1px solid white;
+}
+.btn-outline-primary{
+    color: white;
+    background-color:rgb(214, 152, 220) ;
+   
+    border: 1px solid white;
 }

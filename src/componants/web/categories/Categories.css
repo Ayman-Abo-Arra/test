@@ -30,9 +30,30 @@ img{
     font-size: 25px;
 }
 .swiper-pagination-bullet{
-    background-color: rgb(62, 110, 180);
+    background-color: #ffff33;
 }
 .swiper-button-prev, .swiper-rtl .swiper-button-next{
     left: 10px;
+}
+.p-rating .p-rating-item.p-rating-item-active .p-rating-icon {
+    color: rgb(214, 152, 220);
+}
+.p-selectbutton .p-button.p-highlight{
+    color: black;
+    background-color: #ffff33;
+}
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    width: 1000px;
+    margin: auto;
+    border: none;
+    margin-bottom: 1rem;
+}
 
+.p-dataview .p-paginator-bottom {
+    border-right: 1px;
+}
+.p-dataview .p-dataview-header{
+    border: none;
 }

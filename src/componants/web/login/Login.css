@@ -1,5 +1,6 @@
 .forgot{
     text-decoration: none;
-    color: black;
+    color: rgb(214, 152, 220);
     padding-left: 12px;
+    font-weight: bold;
 }

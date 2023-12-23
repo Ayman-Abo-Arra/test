@@ -1,26 +1,30 @@
 .profile{
     display: flex;
     gap: 80px;
-    padding-top: 20px;
   
 }
 .profileLinks nav{
+    padding-top: 10px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     width: 100px;
+    font-family: 'Bitter', serif;
+    
 }
 .profileLinks{
-    /* background-color: rgb(235, 154, 5); */
     width: 100px;
     
 }
 .userData{
+    padding-top: 13px;
     flex-grow: 1;
 }
 nav a{
-    color: rgb(62, 110, 180);
+    font-size: 20px;
+    color: black;
     text-decoration: none;
+    font-weight: bold;
 }

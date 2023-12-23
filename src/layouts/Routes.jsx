@@ -81,16 +81,16 @@ import AllProduct from "../componants/web/products/AllProducts.jsx";
           element: <Categories />,
         },
         {
+          path: "products",
+          element: <AllProduct />,
+        },
+        {
           path: "products/category/:categoryId",
           element: <CategoriesDetails />,
         },
         {
           path: "product/:productId",
-          element: <Product />,
-        },
-        {
-          path: "products",
-          element: <AllProduct />,
+          element: <Product/>,
         },
         
         {

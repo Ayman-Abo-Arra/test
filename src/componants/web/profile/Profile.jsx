@@ -17,7 +17,7 @@ export default function Profile() {
   return (
     <aside className={`${style.profile}`}>
       <div className={`${style.profileLinks}`}>
-        <nav>
+        <nav className="bg-warning">
           <Link to="info"> Info </Link>
           <Link to="contact">Contact </Link>
           <Link to="order">Order </Link>
