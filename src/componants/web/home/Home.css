@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Krub:wght@600&display=swap');
-.header{
-    background-image: url(../images/header1.jpg);
-    background-size: cover;
-background-position: center;
-}
 .header-contant{
     
    font-size: 50px;
